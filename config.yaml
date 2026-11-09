@@ -1,0 +1,6 @@
+data_path: data/alzheimers_disease_data.csv
+target: Diagnosis
+drop_cols: [PatientID, DoctorInCharge]
+categorical_cols: [Gender, Ethnicity, EducationLevel]
+test_size: 0.2
+random_state: 42
