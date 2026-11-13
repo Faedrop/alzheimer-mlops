@@ -3,7 +3,7 @@ from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 
 from src.preprocess import load_config, load_data
-
+import mlflow
 
 def main():
     cfg = load_config()
@@ -28,6 +28,10 @@ def main():
     print(f"f1:       {f1_score(y_test, preds):.3f}")
     print(f"roc_auc:  {roc_auc_score(y_test, proba):.3f}")
 
-
+    mlflow.set_experiment("alzheimer-baseline")
+    with mlflow.start_run():
+        mlflow.log_param("model", "RandomForest")
+        mlflow.log_metric("f1", f1_score(y_test, preds))
+        mlflow.log_metric("roc_auc", roc_auc_score(y_test, proba))
 if __name__ == "__main__":
     main()
