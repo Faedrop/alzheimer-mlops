@@ -1,3 +1,4 @@
-pandas
+pandas<3
 scikit-learn
 pyyaml
+mlflow-skinny
